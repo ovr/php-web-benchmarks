@@ -23,6 +23,10 @@ function bench($value, $n = 1000000) {
         json_encode($value);
     });
 
+    $benchmark->add('bin_encode',   function() use (&$value) {
+        bin_encode($value);
+    });
+
     $benchmark->add('bson_encode',   function() use (&$value) {
         bson_encode($value);
     });
