@@ -23,21 +23,29 @@ function bench($value, $n = 1000000) {
         json_encode($value);
     });
 
-    $benchmark->add('bin_encode',   function() use (&$value) {
-        bin_encode($value);
-    });
+    if (function_exists('bin_encode')) {
+        $benchmark->add('bin_encode',   function() use (&$value) {
+            bin_encode($value);
+        });
+    }
 
-    $benchmark->add('bson_encode',   function() use (&$value) {
-        bson_encode($value);
-    });
+    if (function_exists('bson_encode')) {
+        $benchmark->add('bson_encode',   function() use (&$value) {
+            bson_encode($value);
+        });
+    }
 
-    $benchmark->add('msgpack_pack',   function() use (&$value) {
-        msgpack_pack($value);
-    });
+    if (function_exists('msgpack_pack')) {
+        $benchmark->add('msgpack_pack',   function() use (&$value) {
+            msgpack_pack($value);
+        });
+    }
 
-    $benchmark->add('igbinary_serialize',   function() use (&$value) {
-        igbinary_serialize($value);
-    });
+    if (function_exists('igbinary_serialize')) {
+        $benchmark->add('igbinary_serialize',   function() use (&$value) {
+            igbinary_serialize($value);
+        });
+    }
 
     $benchmark->add('var_export',   function() use (&$value) {
         var_export($value, true);
