@@ -1,0 +1,20 @@
+{
+    "name": "ovr/php-web-benchmarks",
+    "authors": [
+        {
+            "name": "Dmitry Patsura",
+            "email": "zaets28rus@gmail.com"
+        }
+    ],
+    "require": {
+        "lavoiesl/php-benchmark": "~1.4"
+    },
+    "require-dev": {
+        "athletic/athletic": "~0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ovr\\Bench\\" : "src/"
+        }
+    }
+}
