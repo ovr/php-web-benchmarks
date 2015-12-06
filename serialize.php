@@ -28,5 +28,13 @@ $benchmark->add('json_encode',   function() use (&$value) {
     json_encode($value);
 });
 
-$benchmark->setCount(10000000);
+$benchmark->add('bson_encode',   function() use (&$value) {
+    bson_encode($value);
+});
+
+$benchmark->add('msgpack_pack',   function() use (&$value) {
+    msgpack_pack($value);
+});
+
+$benchmark->setCount(1000000);
 $benchmark->run();
