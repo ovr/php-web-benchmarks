@@ -59,9 +59,12 @@ bench([
 
 $class = new \stdClass();
 $class->property1 = true;
-$class->property1 = false;
+$class->property2 = false;
+$class->property3 = "test string";
+$class->property4 = 1;
+$class->property5 = 1.0;
 
-echo PHP_EOL . "Serialize Object " . PHP_EOL;
+echo PHP_EOL . "Serialize stdClass " . PHP_EOL;
 bench($class);
 
 echo PHP_EOL . "Serialize Array with 10000 integer(s)" . PHP_EOL;
