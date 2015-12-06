@@ -40,5 +40,9 @@ $benchmark->add('igbinary_serialize',   function() use (&$value) {
     igbinary_serialize($value);
 });
 
+$benchmark->add('var_export',   function() use (&$value) {
+    var_export($value, true);
+});
+
 $benchmark->setCount(1000000);
 $benchmark->run();
