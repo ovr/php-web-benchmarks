@@ -36,5 +36,9 @@ $benchmark->add('msgpack_pack',   function() use (&$value) {
     msgpack_pack($value);
 });
 
+$benchmark->add('igbinary_serialize',   function() use (&$value) {
+    igbinary_serialize($value);
+});
+
 $benchmark->setCount(1000000);
 $benchmark->run();
