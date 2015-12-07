@@ -15,41 +15,41 @@ include_once __DIR__ . '/vendor/autoload.php';
 function bench($value, $n = 1000000) {
     $benchmark = new Benchmark;
 
-    $encoded = serialize($value);
-    $benchmark->add('unserialize',   function() use (&$encoded) {
-        @unserialize($encoded);
+    $serialized = serialize($value);
+    $benchmark->add('unserialize',   function() use (&$serialized) {
+        unserialize($serialized);
     });
 
-    $encoded = json_encode($value);
-    $benchmark->add('json_decode',   function() use (&$encoded) {
-        json_decode($encoded);
+    $jsonEncoded = json_encode($value);
+    $benchmark->add('json_decode',   function() use (&$jsonEncoded) {
+        json_decode($jsonEncoded);
     });
 
     if (function_exists('bin_decode')) {
-        $encoded = bin_encode($value);
-        $benchmark->add('bin_decode',   function() use (&$encoded) {
-            bin_decode($encoded);
+        $binEncoded = bin_encode($value);
+        $benchmark->add('bin_decode',   function() use (&$binEncoded) {
+            bin_decode($binEncoded);
         });
     }
 
     if (function_exists('bson_decode')) {
-        $encoded = bson_encode($value);
-        $benchmark->add('bson_decode',   function() use (&$encoded) {
-            bson_decode($encoded);
+        $bsonEncoded = bson_encode($value);
+        $benchmark->add('bson_decode',   function() use (&$bsonEncoded) {
+            bson_decode($bsonEncoded);
         });
     }
 
     if (function_exists('msgpack_pack')) {
-        $encoded = msgpack_pack($value);
-        $benchmark->add('msgpack_unpack',   function() use (&$encoded) {
-            msgpack_unpack($encoded);
+        $msgPack = msgpack_pack($value);
+        $benchmark->add('msgpack_unpack',   function() use (&$msgPack) {
+            msgpack_unpack($msgPack);
         });
     }
 
     if (function_exists('igbinary_unserialize')) {
-        $encoded = igbinary_serialize($value);
-        $benchmark->add('igbinary_unserialize',   function() use (&$encoded) {
-            igbinary_unserialize($encoded);
+        $igbinarySerialized = igbinary_serialize($value);
+        $benchmark->add('igbinary_unserialize',   function() use (&$igbinarySerialized) {
+            igbinary_unserialize($igbinarySerialized);
         });
     }
 
