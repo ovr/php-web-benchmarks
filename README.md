@@ -1,6 +1,13 @@
 PHP Web Benchmarks
 ==================
 
+## Cast vs fcall cast ((bool) $a vs boolval($a))
+
+Bench               | Time     |
+------------------- | -------- |
+(bool) $a           | 275 ms   |
+boolval($a)         | 984 ms   |
+
 ## Serialize
 
 1. Serialize a simple array with `php-5.6`
