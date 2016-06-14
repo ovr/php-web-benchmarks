@@ -8,7 +8,8 @@
     ],
     "require": {
         "lavoiesl/php-benchmark": "~1.4",
-	"twig/twig": "~1.24.1"
+	    "twig/twig": "~1.24.1",
+        "kakserpom/phpdaemon": "dev-master"
     },
     "require-dev": {
         "athletic/athletic": "~0.1"
